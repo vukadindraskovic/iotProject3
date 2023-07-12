@@ -1,0 +1,106 @@
+1. Na Data servisu, potrebno je izvrsiti HTTP POST metodu kako bi se kreirao ValueDescriptor:
+adresa: http://localhost:48080/api/v1/valuedescriptor
+body1: 
+{
+    "name": "id",
+    "description": "data from .csv file",
+    "min": "",
+    "max": "",
+    "type": "String",
+    "uomLabel": "id",
+    "defaultValue": "null",
+    "labels": [
+        "environment",
+        "id"
+    ]
+}
+
+body2: 
+{
+    "name": "room_id",
+    "description": "data from .csv file",
+    "min": "",
+    "max": "",
+    "type": "String",
+    "uomLabel": "room_id",
+    "defaultValue": "null",
+    "labels": [
+        "environment",
+        "room_id"
+    ]
+}
+
+body3: 
+{
+    "name": "noted_date",
+    "description": "data from .csv file",
+    "min": "",
+    "max": "",
+    "type": "String",
+    "uomLabel": "noted_date",
+    "defaultValue": "null",
+    "labels": [
+        "environment",
+        "noted_date"
+    ]
+}
+
+body4: 
+{
+    "name": "temp",
+    "description": "data from .csv file",
+    "min": "",
+    "max": "",
+    "type": "Int64",
+    "uomLabel": "temp",
+    "defaultValue": "null",
+    "labels": [
+        "environment",
+        "temp"
+    ]
+}
+
+body5: 
+{
+    "name": "out_in",
+    "description": "data from .csv file",
+    "min": "",
+    "max": "",
+    "type": "String",
+    "uomLabel": "out_in",
+    "defaultValue": "null",
+    "labels": [
+        "environment",
+        "out_in"
+    ]
+}
+
+2. Kreirati Device Profile pozivanjem HTTP POST metode na adresu http://localhost:48081/api/v1/deviceprofile/uploadfile
+i selktovanjem fajla docker-profile.yaml
+
+3. Kreirati device HTTP POST metodom na adresu http://localhost:48081/api/v1/device
+{
+    "name": "SensorValueCluster2",
+    "description": "Raspberry Pi sensor cluster",
+    "adminState": "unlocked",
+    "operatingState": "enabled",
+    "protocols": {
+        "HTTP": {
+            "host": "localhost",
+            "unitID": "1"
+        }
+    },
+    "labels": [
+        "Temperature sensor",
+        "DHT11"
+    ],
+    "location": "Nis",
+    "service": {
+        "name": "edgex-device-rest"
+    },
+    "profile": {
+        "name": "SensorCluster2"
+    }
+}
+
+https://www.youtube.com/watch?v=Jszd7zrl-_U - kako postaviti grafanu
