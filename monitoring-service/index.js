@@ -43,7 +43,7 @@ mqttClient.on('message', (topic, payload) => {
 
 async function sendAlert()
 {
-    const url = 'http://192.168.13.1:48082/api/v1/device/2553a234-031e-42e7-9f06-9d9e3b9fb1be/command/4beb1d8e-bd70-4944-8743-7698221b04e8'
+    const url = 'http://10.66.164.235:48082/api/v1/device/2553a234-031e-42e7-9f06-9d9e3b9fb1be/command/4beb1d8e-bd70-4944-8743-7698221b04e8'
     const body = {
         state: currentState
     }

@@ -15,7 +15,7 @@ int i = 1;
 var mqttService = MqttService.Instance();
 
 await mqttService.ConnectAsync(address, port);
-var client = InfluxDBClientFactory.Create(url: "http://192.168.1.13:8086", "admin", "adminadmin".ToCharArray());
+var client = InfluxDBClientFactory.Create(url: "http://influxdb:8086", "admin", "adminadmin".ToCharArray());
 Console.WriteLine($"CLIENT is null {client == null}");
 await mqttService.SubsribeToTopicsAsync(new List<string> { edgexTopic });
 
