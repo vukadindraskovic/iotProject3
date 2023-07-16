@@ -71,12 +71,12 @@ services:
     depends_on:
       - influxdb 
   visualization:
-      build:
-        context: .
-        dockerfile: ./VisualizationService/Dockerfile
-      depends_on:
-        influxdb:
-          condition: service_healthy
+    build:
+      context: .
+      dockerfile: ./VisualizationService/Dockerfile
+    depends_on:
+      influxdb:
+        condition: service_healthy
   app-service-mqtt:
     image: edgexfoundry/docker-app-service-configurable:1.1.0
     ports:

@@ -4,6 +4,12 @@ const username = 'monitoring'
 const password = 'monitoring'
 const edgexTopic = 'edgex/sensor_value'
 let currentState = 'OFF'
+const request = require('request');
+const axios = require('axios')
+
+
+
+
 
 const address = 'tcp://broker.hivemq.com:1883'
 
@@ -14,7 +20,7 @@ const mqttClient = mqtt.connect(address, {
 })
 
 mqttClient.subscribe(edgexTopic, () => {
-    console.log(`monitoroin service subscribed to ${edgexTopic}`)
+    console.log(`monitoring service subscribed to ${edgexTopic}`)
 })
 
 mqttClient.on('message', (topic, payload) => {
@@ -43,17 +49,16 @@ mqttClient.on('message', (topic, payload) => {
 
 async function sendAlert()
 {
-    const url = 'http://10.66.164.235:48082/api/v1/device/2553a234-031e-42e7-9f06-9d9e3b9fb1be/command/4beb1d8e-bd70-4944-8743-7698221b04e8'
+    const url = "http://command:48082/api/v1/device/4edd2d6c-d002-4dfd-bc49-225422b906a9/command/75cb95c7-8b1a-4d32-ad8a-f224312b3c75"
     const body = {
-        state: currentState
+        color: currentState === 'OFF' ? "red" : "green"
     }
+
     try {
-        const res = await fetch(url, {
-            method: 'PUT',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({body})
+        const response = await axios.put(url, {
+            color: currentState === 'OFF' ? "red" : "green"
         })
-        console.log(res)
+        console.log(response)
     }
     catch (ex) {
         console.log(ex)

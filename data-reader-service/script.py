@@ -22,4 +22,4 @@ if __name__ == "__main__":
             response = requests.post(url, data=json.dumps(payload), headers=headers, verify=False)
             print(response)
 
-            time.sleep(5)
+            time.sleep(2)

@@ -104,3 +104,10 @@ i selktovanjem fajla docker-profile.yaml
 }
 
 https://www.youtube.com/watch?v=Jszd7zrl-_U - kako postaviti grafanu
+
+Potrebno je klonirati repozitorijum https://github.com/jonas-werner/colorChanger.git u root folder projekta.
+Nakon toga je potrebno pozicinoirati se u colorChanger folder i izbildovati docker kontejner komandom "docker build -t colorchanger ."
+Zatim je potrebno pokrenuti ga komandom "docker run -d -p 5000:5000 --name colorchanger colorchanger:latest"
+Nakon toga je moguce pozivanje REST Api-ja na portu 5000 pomocu Postman-a. 
+Potrebno je da EdgeX zna za ovu test aplikaciju kako bi mogao da komunicira sa njom.
+Kod pokretanja python skripte, potrebno je staviti za "ip" parametar "localhost", a za devip parametar lokalnu IP adresu masine na kojoj je pokrenut colorChanger.
